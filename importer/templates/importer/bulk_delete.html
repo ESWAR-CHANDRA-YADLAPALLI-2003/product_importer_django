@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bulk Delete Products</title>
+</head>
+<body>
+    <h1>Delete All Products</h1>
+    <p>Are you sure you want to delete <strong>all products</strong>? This cannot be undone.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete All</button>
+        <a href="{% url 'product_list' %}">Cancel</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if webhook %}Edit{% else %}Add{% endif %} Webhook</title>
+</head>
+<body>
+    <h1>{% if webhook %}Edit{% else %}Add{% endif %} Webhook</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'webhook_list' %}">Back</a>
+</body>
+</html>

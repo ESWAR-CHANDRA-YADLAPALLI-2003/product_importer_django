@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Products</title>
+</head>
+<body>
+    <h1>Products</h1>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{% url 'upload_file' %}">Upload More</a> |
+    <a href="{% url 'bulk_delete_products' %}">Delete All Products</a>
+    <table border="1">
+        <tr>
+            <th>SKU</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.sku }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.active }}</td>
+            <td>
+                <a href="{% url 'edit_product' product.pk %}">Edit</a> |
+                <a href="{% url 'delete_product' product.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

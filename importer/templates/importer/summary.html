@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Import Summary</title>
+</head>
+<body>
+    <h1>Import Summary</h1>
+
+    <h2>Imported Products ({{ imported|length }})</h2>
+    <ul>
+        {% for product in imported %}
+            <li>{{ product.sku }} - {{ product.title }}</li>
+        {% empty %}
+            <li>No products imported.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Errors ({{ errors|length }})</h2>
+    <ul>
+        {% for error in errors %}
+            <li>{{ error.row }} → {{ error.error }}</li>
+        {% empty %}
+            <li>No errors.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'upload_file' %}">Back to Upload</a>
+    <a href="{% url 'product_list' %}">View Products</a>
+</body>
+</html>
